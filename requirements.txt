@@ -1,0 +1,6 @@
+Flask
+tld
+fuzzywuzzy
+requests
+flask-sse
+bane

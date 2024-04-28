@@ -1,0 +1,36 @@
+<!-- templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDagger</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <div id="loader" class="loader hidden"></div>
+    <h1 class="title">Web Dagger</h1>
+    <form id="uploadForm" action="/" method="post" enctype="multipart/form-data">
+        <label for="fileInput">Choose File</label>
+        <input type="file" name="file" id="fileInput">
+        <button type="submit">Upload File</button>
+    </form>
+    <p class="description">
+        <strong>How to Use WebDagger:</strong>
+        <br>
+        1. <strong>Upload File:</strong> Click the "Choose File" button and select the captured request file from your computer.
+        <br>
+        2. <strong>Start Scan:</strong> Click the "Upload" button to start the scanning process.
+        <br>
+        3. <strong>Real-Time Updates:</strong> View the scan progress and results in real time on the report page.
+    </p>
+    
+        <script>
+        document.getElementById('uploadForm').addEventListener('submit', function () {
+            // Show loader when form is submitted
+            document.getElementById('loader').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+</head>
+<body>
+    <h1 class="title">Real-Time Report</h1>
+    <div id="report">
+        <!-- The report content will be updated dynamically -->
+    </div>
+
+    <script>
+        function handleSSE(event) {
+            // Get the received data
+            var data = event.data;
+
+            // Get the report div
+            var reportDiv = document.getElementById("report");
+
+            // Create a new paragraph element
+            var para = document.createElement("p");
+
+            // Create a text node with the received data
+            var node = document.createTextNode(data);
+
+            // Append the text node to the paragraph element
+            para.appendChild(node);
+
+            // Append the new paragraph to the report div
+            reportDiv.appendChild(para);
+        }
+
+        // Create an EventSource object to listen for SSE events
+        var eventSource = new EventSource("/events");
+
+        // Add event listener for "message" events
+        eventSource.addEventListener("message", handleSSE);
+    </script>
+</body>
+</html>
