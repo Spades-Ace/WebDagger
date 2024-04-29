@@ -16,6 +16,7 @@
         <input type="file" name="file" id="fileInput">
         <button type="submit">Upload File</button>
     </form>
+    <p id="fileName" class="description">No file selected.</p>
     <p class="description">
         <strong>How to Use WebDagger:</strong>
         <br>
@@ -26,10 +27,19 @@
         3. <strong>Real-Time Updates:</strong> View the scan progress and results in real time on the report page.
     </p>
     
-        <script>
+    <script>
         document.getElementById('uploadForm').addEventListener('submit', function () {
             // Show loader when form is submitted
             document.getElementById('loader').classList.remove('hidden');
+        });
+
+        // Add event listener to input file element
+        document.getElementById('fileInput').addEventListener('change', function() {
+            // Get the file name
+            var fileName = this.files[0].name;
+
+            // Update the file name paragraph text
+            document.getElementById('fileName').textContent = 'Selected file: ' + fileName;
         });
     </script>
 </body>
